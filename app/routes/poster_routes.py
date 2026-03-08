@@ -18,7 +18,7 @@ async def generate_poster(
     try:
         logger.info(f"Received poster generation request for model: {request.bike_model}")
         
-        # 1. Build the prompt
+        # 1. Build the prompt for the image generator
         prompt = build_prompt(request)
         
         # 2. Use the injected service to generate the poster
