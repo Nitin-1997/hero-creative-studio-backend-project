@@ -3,7 +3,6 @@ __pycache__/
 *.py[cod]
 *$py.class
 venv/
-.env
 
 # Project specific
 generated_images/*.png
