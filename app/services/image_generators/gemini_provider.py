@@ -35,12 +35,13 @@ class GeminiImageProvider(ImageGenerator):
             
             if response.generated_images:
                 gen_image = response.generated_images[0]
-                # Extract bytes based on SDK object structure
-                if hasattr(gen_image.image, 'image_bytes'):
-                    return gen_image.image.image_bytes
-                return gen_image.image # Sometimes it's direct bytes or a PIL-like object
+                # Extract image based on SDK object structure
+                image = gen_image.image
+                if hasattr(image, 'image_bytes'):
+                    return image.image_bytes
+                return image # This could be a PIL Image or bytes
         except Exception as e:
-            print(f"GeminiProvider Error: {e}")
+            print(f"GeminiProvider Error (Details): {type(e).__name__} - {str(e)}")
             return None
         
         return None

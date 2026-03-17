@@ -1,7 +1,7 @@
 from fastapi import FastAPI
 from fastapi.staticfiles import StaticFiles
 from fastapi.middleware.cors import CORSMiddleware
-from fastapi.responses import FileResponse
+from fastapi.middleware.cors import CORSMiddleware
 from app.routes import poster_routes
 import os
 
@@ -28,8 +28,7 @@ app.include_router(poster_routes.router, prefix="/api")
 
 @app.get("/")
 async def root():
-    # Return the beautiful dashboard to the user
-    return FileResponse("index.html")
+    return {"message": "Hero Creative Studio API is running"}
 
 if __name__ == "__main__":
     import uvicorn
