@@ -17,3 +17,15 @@ class ImageGenerator(ABC):
     @abstractmethod
     def provider_name(self) -> str:
         pass
+
+class StorageProvider(ABC):
+    """
+    Interface for image storage (Disk, G-Drive, S3, etc).
+    """
+    @abstractmethod
+    def save_image(self, image_data, prefix: str = "gen") -> str:
+        """
+        Saves logic for persisting image data.
+        Returns the public identifier/URL.
+        """
+        pass
